@@ -74,6 +74,21 @@ public class RentalServiceTest {
         assertEquals(4.5, rentalStatement.getTotalRent());
     }
 
+    @Test
+    public void testTotalRentForAllTypesOfMovies() {
+        //Arrange
+        Customer customer = getCustomer();
+        customer.getMovieRentals().clear();
+        customer.addMovieRental(new MovieRental(new Movie("Hunden", Movie.Type.CHILDRENS), 8));
+        customer.addMovieRental(new MovieRental(new Movie("RRR", Movie.Type.NEW_RELEASE), 8));
+        customer.addMovieRental(new MovieRental(new Movie("SIR", Movie.Type.REGULAR), 5));
+
+        //Act
+        RentalStatement rentalStatement = new RentalService().statement(customer);
+        //Assert TotalRent
+        assertEquals(39.5, rentalStatement.getTotalRent());
+    }
+
     private static RentalStatement getRentStatement() {
         RentalStatement rentalStatement = new RentalService().statement(getCustomer());
         return rentalStatement;
