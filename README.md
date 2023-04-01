@@ -22,7 +22,7 @@ java -cp src com.etraveli.movierentalsapp.MovieRentalsApp
 3) Main Business Logic is to find the MovieRentals based on MovieTypes.
 4) Packaging and Refactoring done in all the classes but still its open for Refactoring and Improvements.
    a) Might add several junit tests to test all edge cases 
-   b) Can use JDK 11 and its features to replace if conditions using Optional.ofNullable().ifPresentOrElse() etc
+   b) Can use JDK 17 and its features to replace if conditions using Optional.ofNullable().ifPresentOrElse() etc
    c) Can Introduce InMemory/Persistent DB to add Customers,Movies,RentalInformation and CustomerMovieRentalsTotalRentDetails
    d) Unique ID can be added for Customer and Movie  for Unique Identification.
 
