@@ -3,13 +3,16 @@ package com.etraveli.movierentalsapp.service;
 import com.etraveli.movierentalsapp.model.Customer;
 import com.etraveli.movierentalsapp.model.MovieRental;
 import com.etraveli.movierentalsapp.model.MovieType;
+import com.etraveli.movierentalsapp.model.RentalStatement;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 /**
  * RentalService has the business logic to generate the RentalStatement for the Customer Movies.
  * Customer is provided as an input with his movies which he  has taken for the rent
+ *
  * @author Parasuram
  */
 public class RentalService {
@@ -23,6 +26,7 @@ public class RentalService {
     /**
      * Takes the Customer as an Input and generates
      * the Movie RentalStatement of the given Customer
+     *
      * @param customer The Customer who wants to get his total movies rent for all the days.
      * @return RentalsStatement
      */

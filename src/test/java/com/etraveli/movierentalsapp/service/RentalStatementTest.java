@@ -1,6 +1,7 @@
 package com.etraveli.movierentalsapp.service;
 
 import com.etraveli.movierentalsapp.model.Customer;
+import com.etraveli.movierentalsapp.model.RentalStatement;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

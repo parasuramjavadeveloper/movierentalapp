@@ -1,9 +1,6 @@
-package com.etraveli.movierentalsapp.service;
+package com.etraveli.movierentalsapp.model;
 
-import com.etraveli.movierentalsapp.model.Customer;
-import com.etraveli.movierentalsapp.model.MovieRental;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Value;
 
 import java.util.HashMap;
 
@@ -13,12 +10,11 @@ import java.util.HashMap;
  *
  * @author Parasuram
  */
-@Getter
-@AllArgsConstructor
+@Value
 public class RentalStatement {
-    private final Customer customer;
-    private final HashMap<String, Double> rentByMovieTitle;
-    private final int frequentEnterPoints;
+    Customer customer;
+    HashMap<String, Double> rentByMovieTitle;
+    int frequentEnterPoints;
 
     /**
      * Calculate the total-rent of all the customer movies for all the days.

@@ -1,17 +1,16 @@
 package com.etraveli.movierentalsapp.service;
 
-import com.etraveli.movierentalsapp.model.Customer;
-import com.etraveli.movierentalsapp.model.Movie;
-import com.etraveli.movierentalsapp.model.MovieRental;
-import com.etraveli.movierentalsapp.model.MovieType;
+import com.etraveli.movierentalsapp.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
 import static com.etraveli.movierentalsapp.constants.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * RentalServiceTest used to test RentalService Property values such as Customer,RentByMovieTitle,FrequentEnterPoints and TotalRent per movie types
+ *
  * @author Parasuram
  */
 public class RentalServiceTest {
