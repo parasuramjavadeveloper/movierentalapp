@@ -1,6 +1,8 @@
 package com.etraveli.movierentalsapp.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
  *
  * @author Parasuram
  */
-@Getter
+@Value
 public class Customer {
     private final String name;
     private final List<MovieRental> movieRentals;
@@ -24,15 +26,4 @@ public class Customer {
         this.movieRentals.add(movieRental);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null
-                || this.getClass() != obj.getClass())
-            return false;
-        Customer customer = (Customer) obj;
-        return this.name.equals(customer.name)
-                && this.movieRentals.equals(customer.movieRentals);
-    }
 }

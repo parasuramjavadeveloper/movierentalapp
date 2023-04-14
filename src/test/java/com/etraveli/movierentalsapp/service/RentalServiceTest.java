@@ -3,6 +3,7 @@ package com.etraveli.movierentalsapp.service;
 import com.etraveli.movierentalsapp.model.Customer;
 import com.etraveli.movierentalsapp.model.Movie;
 import com.etraveli.movierentalsapp.model.MovieRental;
+import com.etraveli.movierentalsapp.model.MovieType;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class RentalServiceTest {
         //Arrange
         Customer customer = getCustomer();
         customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("RRR", Movie.Type.NEW_RELEASE), 3));
+        customer.addMovieRental(new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 3));
 
         // Act
         RentalStatement rentalStatement = new RentalService().statement(customer);
@@ -66,7 +67,7 @@ public class RentalServiceTest {
         //Arrange
         Customer customer = getCustomer();
         customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("Hunden", Movie.Type.CHILDRENS), 5));
+        customer.addMovieRental(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 5));
 
         //Act
         RentalStatement rentalStatement = new RentalService().statement(customer);
@@ -79,9 +80,9 @@ public class RentalServiceTest {
         //Arrange
         Customer customer = getCustomer();
         customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("Hunden", Movie.Type.CHILDRENS), 8));
-        customer.addMovieRental(new MovieRental(new Movie("RRR", Movie.Type.NEW_RELEASE), 8));
-        customer.addMovieRental(new MovieRental(new Movie("SIR", Movie.Type.REGULAR), 5));
+        customer.addMovieRental(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 8));
+        customer.addMovieRental(new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 8));
+        customer.addMovieRental(new MovieRental(new Movie("SIR", MovieType.REGULAR), 5));
 
         //Act
         RentalStatement rentalStatement = new RentalService().statement(customer);
@@ -96,8 +97,8 @@ public class RentalServiceTest {
 
     private static Customer getCustomer() {
         Customer customers = new Customer(SAMPLE_CUSTOMER_NAME);
-        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE, Movie.Type.REGULAR), 3));
-        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE_TWO, Movie.Type.REGULAR), 1));
+        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE, MovieType.REGULAR), 3));
+        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE_TWO, MovieType.REGULAR), 1));
         return customers;
     }
 
