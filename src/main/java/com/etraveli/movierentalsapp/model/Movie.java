@@ -9,8 +9,8 @@ import lombok.Value;
  */
 @Value
 public class Movie {
-    private final String title;
-    private final MovieType movieType;
+    String title;
+    MovieType movieType;
 
 }
 

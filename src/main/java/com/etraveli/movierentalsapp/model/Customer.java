@@ -14,8 +14,8 @@ import java.util.List;
  */
 @Value
 public class Customer {
-    private final String name;
-    private final List<MovieRental> movieRentals;
+    String name;
+    List<MovieRental> movieRentals;
 
     public Customer(String name) {
         this.name = name;
