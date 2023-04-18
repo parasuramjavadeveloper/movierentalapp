@@ -1,23 +1,19 @@
 package com.etraveli.movierentalsapp.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.Value;
 
 /**
  * Movies and its types
+ *
  * @author Parasuram
  */
-@Getter
+@Data
 @AllArgsConstructor
 public class Movie {
-    public enum Type {
-        CHILDRENS,
-        REGULAR,
-        NEW_RELEASE
-    }
-
-    private final String title;
-    private final Type type;
+    private String title;
+    private MovieType movieType;
 
     @Override
     public boolean equals(Object obj) {
@@ -28,7 +24,8 @@ public class Movie {
             return false;
         Movie movie = (Movie) obj;
         return this.title.equals(movie.title)
-                && this.type == movie.type;
+                && this.movieType == movie.movieType;
     }
+
 }
 

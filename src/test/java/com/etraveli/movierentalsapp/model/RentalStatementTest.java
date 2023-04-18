@@ -1,8 +1,8 @@
-package com.etraveli.movierentalsapp.service;
+package com.etraveli.movierentalsapp.model;
 
-import com.etraveli.movierentalsapp.model.Customer;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 import static com.etraveli.movierentalsapp.constants.Constants.*;
@@ -19,9 +19,9 @@ public class RentalStatementTest {
     @Test
     public void testToVerifyCustomer() {
         //Arrange
-        RentalStatement rentalStatement = new RentalStatement(new Customer(SAMPLE_CUSTOMER_NAME), new HashMap<>(), 0);
+        RentalStatement rentalStatement = new RentalStatement(new Customer(SAMPLE_CUSTOMER_NAME, Collections.emptyList()), new HashMap<>(), 0);
         //Act and Assert to check given Customer returns properly
-        assertEquals(customer(), rentalStatement.getCustomer());
+        assertEquals(new Customer(SAMPLE_CUSTOMER_NAME, Collections.emptyList()), rentalStatement.getCustomer());
         assertEquals(SAMPLE_CUSTOMER_NAME, rentalStatement.getCustomer().getName());
     }
 
@@ -44,7 +44,7 @@ public class RentalStatementTest {
     @Test
     public void testCustomerRentalStatement() {
         //Arrange
-        RentalStatement rentalStatement = new RentalStatement(new Customer(SAMPLE_CUSTOMER_NAME), rentByMovieTitle(), 5);
+        RentalStatement rentalStatement = new RentalStatement(new Customer(SAMPLE_CUSTOMER_NAME, Collections.emptyList()), rentByMovieTitle(), 5);
         //Assert FrequentEnterPoints
         assertEquals(5.5, rentalStatement.getTotalRent());
         assertEquals(5, rentalStatement.getFrequentEnterPoints());
@@ -71,9 +71,4 @@ public class RentalStatementTest {
         rentByMovieTitle.put("Pushpa", 3.0);
         return rentByMovieTitle;
     }
-
-    private static Customer customer() {
-        return new Customer(SAMPLE_CUSTOMER_NAME);
-    }
-
 }
