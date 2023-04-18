@@ -1,6 +1,6 @@
 package com.etraveli.movierentalsapp.model;
 
-import lombok.Getter;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Parasuram
  */
-@Getter
+@Data
 public class Customer {
     private final String name;
     private final List<MovieRental> movieRentals;
