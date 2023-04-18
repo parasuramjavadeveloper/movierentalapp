@@ -3,7 +3,9 @@ package com.etraveli.movierentalsapp.service;
 import com.etraveli.movierentalsapp.model.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.etraveli.movierentalsapp.constants.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +20,7 @@ public class RentalServiceTest {
     @Test
     public void testToVerifyCustomer() {
         //Arrange and Act
-        RentalStatement rentalStatement = new RentalService().statement(new Customer(SAMPLE_CUSTOMER_NAME));
+        RentalStatement rentalStatement = new RentalService().statement(new Customer(SAMPLE_CUSTOMER_NAME, Collections.emptyList()));
         //Assert Given Customer returns or not
         assertEquals(SAMPLE_CUSTOMER_NAME, rentalStatement.getCustomer().getName());
     }
@@ -51,12 +53,9 @@ public class RentalServiceTest {
     @Test
     public void testTotalRentForNewMovies() {
         //Arrange
-        Customer customer = getCustomer();
-        customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 3));
-
+        final var movieRentals = List.of(new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 3));
         // Act
-        RentalStatement rentalStatement = new RentalService().statement(customer);
+        RentalStatement rentalStatement = new RentalService().statement(new Customer(SAMPLE_CUSTOMER_NAME, movieRentals));
         //Assert TotalRent
         assertEquals(9, rentalStatement.getTotalRent());
     }
@@ -64,12 +63,9 @@ public class RentalServiceTest {
     @Test
     public void testTotalRentForChildrenMovies() {
         //Arrange
-        Customer customer = getCustomer();
-        customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 5));
-
+        final var movieRentals = List.of(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 5));
         //Act
-        RentalStatement rentalStatement = new RentalService().statement(customer);
+        RentalStatement rentalStatement = new RentalService().statement(new Customer(SAMPLE_CUSTOMER_NAME, movieRentals));
         //Assert TotalRent
         assertEquals(4.5, rentalStatement.getTotalRent());
     }
@@ -77,28 +73,24 @@ public class RentalServiceTest {
     @Test
     public void testTotalRentForAllTypesOfMovies() {
         //Arrange
-        Customer customer = getCustomer();
-        customer.getMovieRentals().clear();
-        customer.addMovieRental(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 8));
-        customer.addMovieRental(new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 8));
-        customer.addMovieRental(new MovieRental(new Movie("SIR", MovieType.REGULAR), 5));
-
-        //Act
-        RentalStatement rentalStatement = new RentalService().statement(customer);
+       final var movieRentals = List.of(new MovieRental(new Movie("Hunden", MovieType.CHILDRENS), 8),
+                new MovieRental(new Movie("RRR", MovieType.NEW_RELEASE), 8),
+                new MovieRental(new Movie("SIR", MovieType.REGULAR), 5));
+        // Act
+        RentalStatement rentalStatement = new RentalService().statement(new Customer(SAMPLE_CUSTOMER_NAME, movieRentals));
         //Assert TotalRent
         assertEquals(39.5, rentalStatement.getTotalRent());
     }
 
     private static RentalStatement getRentStatement() {
-        RentalStatement rentalStatement = new RentalService().statement(getCustomer());
-        return rentalStatement;
+        return new RentalService().statement(getCustomer());
     }
 
     private static Customer getCustomer() {
-        Customer customers = new Customer(SAMPLE_CUSTOMER_NAME);
-        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE, MovieType.REGULAR), 3));
-        customers.addMovieRental(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE_TWO, MovieType.REGULAR), 1));
-        return customers;
+
+        final var movieRentals = List.of(new MovieRental(new Movie(SAMPLE_MOVIE_TITLE, MovieType.REGULAR), 3),
+                new MovieRental(new Movie(SAMPLE_MOVIE_TITLE_TWO, MovieType.REGULAR), 1));
+        return new Customer(SAMPLE_CUSTOMER_NAME, movieRentals);
     }
 
     private HashMap<String, Double> expectedRentByMovieTitle() {

@@ -1,8 +1,7 @@
 package com.etraveli.movierentalsapp.model;
 
-import lombok.Getter;
+import lombok.Value;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,18 +9,14 @@ import java.util.List;
  *
  * @author Parasuram
  */
-@Getter
+@Value
 public class Customer {
-    private final String name;
-    private final List<MovieRental> movieRentals;
+    String name;
+    List<MovieRental> movieRentals;
 
-    public Customer(String name) {
+    public Customer(String name, List<MovieRental> movieRentals) {
         this.name = name;
-        this.movieRentals = new ArrayList<>();
-    }
-
-    public void addMovieRental(MovieRental movieRental) {
-        this.movieRentals.add(movieRental);
+        this.movieRentals = movieRentals;
     }
 
     @Override
